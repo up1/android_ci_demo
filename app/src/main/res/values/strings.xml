@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Temperature Convertor</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_long_list">LongListActivity</string>
+
+
+    <string name="row_label">Clicked on row</string>
+    <string name="column_label">Clicked on column</string>
+
+</resources>
