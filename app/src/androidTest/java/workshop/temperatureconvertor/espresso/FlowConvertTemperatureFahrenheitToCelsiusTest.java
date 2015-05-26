@@ -1,6 +1,5 @@
 package workshop.temperatureconvertor.espresso;
 
-
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.rule.ActivityTestRule;
 
@@ -21,30 +20,30 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(Parameterized.class)
-public class DemoParameterizedTest {
-
-    private final String celsius;
-    private final String fahrenheit;
+public class FlowConvertTemperatureFahrenheitToCelsiusTest {
 
     @Rule
-    public ActivityTestRule activityActivityTestRule = new ActivityTestRule(MainActivity.class);
+    public ActivityTestRule<MainActivity> activityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class);
+    private String fahrenheit;
+    private String celsius;
 
     @Parameters
     public static Iterable<Object[]> data() {
-        return Arrays.asList(new Object[][] {
-                {"0", "32.0"},
-                {"1", "33.8"}
+        return Arrays.asList(new Object[][]{
+                {"32", "0.0"},
+                {"64", "17.77777777777778"}
         });
     }
 
-    public DemoParameterizedTest(String celsius, String fahrenheit) {
-        this.celsius = celsius;
+    public FlowConvertTemperatureFahrenheitToCelsiusTest(String fahrenheit, String celsius) {
         this.fahrenheit = fahrenheit;
+        this.celsius = celsius;
     }
 
     @Test
-    public void convertDataFromCelsiusToFahrenheit() {
-        onView(withId(R.id.celsius_value)).perform(ViewActions.typeText(this.celsius));
-        onView(withId(R.id.fahrenheit_value)).check(matches(withText(this.fahrenheit)));
+    public void convert() {
+        onView(withId(R.id.fahrenheit_value)).perform(ViewActions.typeText(this.fahrenheit));
+        onView(withId(R.id.celsius_value)).check(matches(withText(this.celsius)));
     }
+
 }
